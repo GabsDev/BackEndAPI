@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68eba8ae-c1d2-4370-b4a6-078bfaf8c7d8" name="Default Changelist" comment="FaceDetentionBox component">
-      <change afterPath="$PROJECT_DIR$/assets/images/homepage.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,9 +30,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/index.html" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -50,6 +50,11 @@
       <recent name="C:\Users\gavil\WebstormProjects\FrontEnd\facerecognitionbrain\assets\images" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="JavaScriptDebug" type="JavascriptDebugType" uri="http://localhost:63342/facerecognitionbrain/public/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -62,6 +67,8 @@
       <workItem from="1612650371063" duration="4745000" />
       <workItem from="1612664869675" duration="15945000" />
       <workItem from="1612683338945" duration="185000" />
+      <workItem from="1613594014267" duration="408000" />
+      <workItem from="1613594427191" duration="109000" />
     </task>
     <task id="LOCAL-00001" summary="ImageLinkForm and Rank components">
       <created>1612671892731</created>
