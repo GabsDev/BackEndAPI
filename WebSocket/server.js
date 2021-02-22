@@ -12,6 +12,7 @@ const categoriesRoutes = require("./routes/categories_routes");
 const findUserMiddleware = require("./middlewares/find_user");
 const authUser = require("./middlewares/auth_user");
 const tasks = require("./controllers/tasks");
+const socketio = require("socket.io");
 
 const app = express();
 
@@ -38,4 +39,40 @@ app.get("/", function (req, res) {
   res.render("home", { user: req.user });
 });
 
-app.listen(3000);
+let server = app.listen(3000);
+let io = socketio(server);
+let sockets = {};
+
+let usersCount = 0;
+
+io.on("connection", function (socket) {
+  let userId = socket.request._query.loggeduser;
+  if (userId) sockets[userId] = socket;
+  console.log(sockets);
+  // Actuaiza usuarios en tiempo real
+  usersCount++;
+  io.emit("count_updated", { count: usersCount });
+
+  socket.on("new_task", function (data) {
+    if (data.userId) {
+      let userSocket = sockets[data.userId];
+      if (!userSocket) return;
+
+      userSocket.emit("new_task", data);
+    }
+  });
+
+  socket.on("disconnect", function () {
+    Object.keys(sockets).forEach((userId) => {
+      let s = sockets[userId];
+      if (s.id == socket.id) sockets[userId] = null;
+    });
+
+    console.log(sockets);
+
+    usersCount--;
+    io.emit("count_updated", { count: usersCount });
+  });
+});
+
+const client = require("./realtime/client");

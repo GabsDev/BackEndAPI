@@ -41,7 +41,7 @@ module.exports = {
     });
   },
   edit: function (req, res) {
-    Category.findById(req.params.id).then(function (task) {
+    Category.findByPk(req.params.id).then(function (task) {
       res.render("categories/edit", { task: task });
     });
   },
