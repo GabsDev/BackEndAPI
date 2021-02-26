@@ -13,12 +13,16 @@ app.set("view engine", "pug");
 
 app.use(lineToSendRoutes);
 
-let server = app.listen(3000);
+let server = app.listen(process.env.PORT || 3000);
 let io = socketio(server);
 
 io.on("connection", function (socket) {
   socket.on("new_line", function (data) {
     io.emit("new_line", data);
+  });
+
+  socket.on("update_line", function (data) {
+    io.emit("update_line", data);
   });
 
   socket.on("disconnect", function () {});

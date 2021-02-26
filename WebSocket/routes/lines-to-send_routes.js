@@ -12,4 +12,8 @@ router
 
 router.get("/lines-to-send/new", LinesToSendController.new);
 
+router.get("/lines-to-send/:id/edit", LinesToSendController.edit);
+
+router.route("/lines-to-send/:id").put(LinesToSendController.update);
+
 module.exports = router;

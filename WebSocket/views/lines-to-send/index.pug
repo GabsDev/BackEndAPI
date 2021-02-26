@@ -46,7 +46,10 @@ html
                         td= line.draw
         script(src="/socket.io/socket.io.js")
         script.
-            socket = io.connect()
+            socket = io.connect(window.location.origin)
             socket.on('new_line', function (data) {
                 console.log(data);
-            }) 
+            })
+            socket.on('update_line', function (data) {
+                console.log(data);
+            })

@@ -49,4 +49,41 @@ module.exports = {
   new: function (req, res) {
     res.render("lines-to-send/new");
   },
+  edit: function (req, res) {
+    LineToSend.findByPk(req.params.id).then(function (line) {
+      res.render("lines-to-send/edit", { line });
+    });
+  },
+  update: function (req, res) {
+    LineToSend.findByPk(req.params.id).then((lineToSend) => {
+      lineToSend.u = req.body.u;
+      lineToSend.p = req.body.p;
+      lineToSend.action = req.body.action;
+      lineToSend.sid = req.body.sid;
+      lineToSend.eid = req.body.eid;
+      lineToSend.leg = req.body.leg;
+      lineToSend.pid = req.body.pid;
+      lineToSend.alt = req.body.alt;
+      lineToSend.lid = req.body.lid;
+      lineToSend.vml = req.body.vml;
+      lineToSend.hml = req.body.hml;
+      lineToSend.ttl = req.body.ttl;
+      lineToSend.tov = req.body.tov;
+      lineToSend.tun = req.body.tun;
+      lineToSend.vsd = req.body.vsd;
+      lineToSend.vso = req.body.vso;
+      lineToSend.hsd = req.body.hsd;
+      lineToSend.hso = req.body.hso;
+      lineToSend.draw = req.body.draw;
+      lineToSend
+        .save()
+        .then((result) => {
+          res.json(result);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.json(err);
+        });
+    });
+  },
 };

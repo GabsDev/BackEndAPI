@@ -34,5 +34,9 @@ module.exports = (sequelize, DataTypes) => {
   LineToSend.afterCreate(function (line, options) {
     socket.emit("new_line", line);
   });
+
+  LineToSend.afterUpdate(function (line, options) {
+    socket.emit("update_line", line);
+  });
   return LineToSend;
 };
