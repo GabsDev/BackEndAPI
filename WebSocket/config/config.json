@@ -2,7 +2,7 @@
   "development": {
     "username": "sa",
     "password": "Asus2020",
-    "database": "proyecto-ws",
+    "database": "proyecto-ws-alone",
     "host": "127.0.0.1",
     "dialect": "mssql"
   },
