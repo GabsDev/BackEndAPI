@@ -1,0 +1,27 @@
+doctype html
+html
+    head
+        title Update Line To Send
+    body
+        form(action=`/lines-to-send/${line.id}?_method=PUT` method="POST")
+            input(type="text" name="u" placeholder="u")
+            input(type="text" name="p" placeholder="p")
+            input(type="text" name="action" placeholder="action")
+            input(type="integer" name="sid" placeholder="sid")
+            input(type="integer" name="eid" placeholder="eid")
+            input(type="integer" name="leg" placeholder="leg")
+            input(type="integer" name="pid" placeholder="pid")
+            input(type="text" name="alt" placeholder="alt")
+            input(type="text" name="lid" placeholder="lid")
+            input(type="text" name="vml" placeholder="vml")
+            input(type="text" name="hml" placeholder="hml")
+            input(type="text" name="ttl" placeholder="ttl")
+            input(type="text" name="tov" placeholder="tov")
+            input(type="text" name="tun" placeholder="tun")
+            input(type="text" name="vsd" placeholder="vsd")
+            input(type="text" name="vso" placeholder="vso")
+            input(type="text" name="hsd" placeholder="hsd")
+            input(type="text" name="hso" placeholder="hso")
+            input(type="text" name="draw" placeholder="draw")
+
+            input(type="submit" value="Update")
