@@ -2,7 +2,9 @@ const GameValue = require("../models").GameValue;
 
 module.exports = {
   api: function (req, res) {
-    GameValue.findAll()
+    GameValue.findAll({
+      attributes: { exclude: ["createdAt", "updatedAt"] },
+    })
       .then((result) => {
         res.json(result);
       })
@@ -12,32 +14,38 @@ module.exports = {
       });
   },
   index: function (req, res) {
-    GameValue.findAll().then((lines) => {
+    GameValue.findAll({
+      attributes: { exclude: ["createdAt", "updatedAt"] },
+    }).then((lines) => {
       res.render("game-value/index", { lines });
     });
   },
   create: function (req, res) {
-    GameValue.create({
-      u: req.body.u,
-      p: req.body.p,
-      action: req.body.action,
-      sid: req.body.sid,
-      eid: req.body.eid,
-      leg: req.body.leg,
-      pid: req.body.pid,
-      alt: req.body.alt,
-      lid: req.body.lid,
-      vml: req.body.vml,
-      hml: req.body.hml,
-      ttl: req.body.ttl,
-      tov: req.body.tov,
-      tun: req.body.tun,
-      vsd: req.body.vsd,
-      vso: req.body.vso,
-      hsd: req.body.hsd,
-      hso: req.body.hso,
-      draw: req.body.draw,
-    })
+    GameValue.create(
+      {
+        g8: req.body.g8,
+        g8bridge: req.body.g8bridge,
+        setValue: req.body.setValue,
+        sid: req.body.sid,
+        IdGame: req.body.IdGame,
+        leg: req.body.leg,
+        pid: req.body.pid,
+        lid: req.body.lid,
+        VisitorOdds: req.body.VisitorOdds,
+        HomeOdds: req.body.HomeOdds,
+        TotalOver: req.body.TotalOver,
+        OverOdds: req.body.OverOdds,
+        UnderOdds: req.body.UnderOdds,
+        VisitorSpread: req.body.VisitorSpread,
+        VisitorSpreadOdds: req.body.VisitorSpreadOdds,
+        HomeSpread: req.body.HomeSpread,
+        HomeSpreadOdds: req.body.HomeSpreadOdds,
+        VisitorSpecialOdds: req.body.VisitorSpecialOdds,
+      },
+      {
+        attributes: { exclude: ["createdAt", "updatedAt"] },
+      }
+    )
       .then((result) => {
         res.json(result);
       })
@@ -55,28 +63,32 @@ module.exports = {
     });
   },
   update: function (req, res) {
-    GameValue.findByPk(req.params.id).then((lineToSend) => {
-      lineToSend.u = req.body.u;
-      lineToSend.p = req.body.p;
-      lineToSend.action = req.body.action;
+    GameValue.findByPk(req.params.id, {
+      attributes: { exclude: ["createdAt", "updatedAt"] },
+    }).then((lineToSend) => {
+      lineToSend.g8 = req.body.g8;
+      lineToSend.g8bridge = req.body.g8bridge;
+      lineToSend.setValue = req.body.setValue;
       lineToSend.sid = req.body.sid;
-      lineToSend.eid = req.body.eid;
+      lineToSend.IdGame = req.body.IdGame;
       lineToSend.leg = req.body.leg;
       lineToSend.pid = req.body.pid;
-      lineToSend.alt = req.body.alt;
       lineToSend.lid = req.body.lid;
-      lineToSend.vml = req.body.vml;
-      lineToSend.hml = req.body.hml;
-      lineToSend.ttl = req.body.ttl;
-      lineToSend.tov = req.body.tov;
-      lineToSend.tun = req.body.tun;
-      lineToSend.vsd = req.body.vsd;
-      lineToSend.vso = req.body.vso;
-      lineToSend.hsd = req.body.hsd;
-      lineToSend.hso = req.body.hso;
-      lineToSend.draw = req.body.draw;
+      lineToSend.VisitorOdds = req.body.VisitorOdds;
+      lineToSend.HomeOdds = req.body.HomeOdds;
+      lineToSend.TotalOver = req.body.TotalOver;
+      lineToSend.OverOdds = req.body.OverOdds;
+      lineToSend.UnderOdds = req.body.UnderOdds;
+      lineToSend.VisitorSpread = req.body.VisitorSpread;
+      lineToSend.VisitorSpreadOdds = req.body.VisitorSpreadOdds;
+      lineToSend.HomeSpread = req.body.HomeSpread;
+      lineToSend.HomeSpreadOdds = req.body.HomeSpreadOdds;
+      lineToSend.VisitorSpecialOdds = req.body.VisitorSpecialOdds;
+
       lineToSend
-        .save()
+        .save({
+          attributes: { exclude: ["createdAt", "updatedAt"] },
+        })
         .then((result) => {
           res.json(result);
         })

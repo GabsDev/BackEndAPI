@@ -5,13 +5,12 @@ html
         table(style='width:100%', border='1')
             tr
                 th u
+                th p
                 th action
                 th sid
                 th eid
                 th leg
                 th pid
-                th alt
-                th lid
                 th lid
                 th vml
                 th hml
@@ -25,25 +24,24 @@ html
                 th draw
                 each line in lines
                     tr
-                        td= line.u
-                        td= line.action
+                        td= line.g8
+                        td= line.g8bridge
+                        td= line.setValue
                         td= line.sid
-                        td= line.eid
+                        td= line.IdGame
                         td= line.leg
                         td= line.pid
-                        td= line.alt
                         td= line.lid
-                        td= line.lid
-                        td= line.vml
-                        td= line.hml
-                        td= line.ttl
-                        td= line.tov
-                        td= line.tun
-                        td= line.vsd
-                        td= line.vso
-                        td= line.hsd
-                        td= line.hso
-                        td= line.draw
+                        td= line.VisitorOdds
+                        td= line.HomeOdds
+                        td= line.TotalOver
+                        td= line.OverOdds
+                        td= line.UnderOdds
+                        td= line.VisitorSpread
+                        td= line.VisitorSpreadOdds
+                        td= line.HomeSpread
+                        td= line.HomeSpreadOdds
+                        td= line.VisitorSpecialOdds
         script(src="/socket.io/socket.io.js")
         script.
             socket = io.connect()

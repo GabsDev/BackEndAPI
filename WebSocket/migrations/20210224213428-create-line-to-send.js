@@ -1,81 +1,100 @@
-'use strict';
+"use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('LineToSends', {
+    await queryInterface.createTable("LineToSends", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       u: {
-        type: Sequelize.TEXT
+        allowNull: true,
+        type: Sequelize.TEXT,
       },
       p: {
-        type: Sequelize.TEXT
+        allowNull: true,
+        type: Sequelize.TEXT,
       },
       action: {
-        type: Sequelize.TEXT
+        allowNull: true,
+        type: Sequelize.TEXT,
       },
       sid: {
-        type: Sequelize.INTEGER
+        allowNull: true,
+        type: Sequelize.INTEGER,
       },
       eid: {
-        type: Sequelize.INTEGER
+        allowNull: true,
+        type: Sequelize.INTEGER,
       },
       leg: {
-        type: Sequelize.INTEGER
+        allowNull: true,
+        type: Sequelize.INTEGER,
       },
       pid: {
-        type: Sequelize.INTEGER
+        allowNull: true,
+        type: Sequelize.INTEGER,
       },
       alt: {
-        type: Sequelize.TEXT
+        allowNull: true,
+        type: Sequelize.TEXT,
       },
       lid: {
-        type: Sequelize.TEXT
+        allowNull: true,
+        type: Sequelize.TEXT,
       },
       vml: {
-        type: Sequelize.TEXT
+        allowNull: true,
+        type: Sequelize.TEXT,
       },
       hml: {
-        type: Sequelize.TEXT
+        allowNull: true,
+        type: Sequelize.TEXT,
       },
       ttl: {
-        type: Sequelize.TEXT
+        allowNull: true,
+        type: Sequelize.TEXT,
       },
       tov: {
-        type: Sequelize.TEXT
+        allowNull: true,
+        type: Sequelize.TEXT,
       },
       tun: {
-        type: Sequelize.TEXT
+        allowNull: true,
+        type: Sequelize.TEXT,
       },
       vsd: {
-        type: Sequelize.TEXT
+        allowNull: true,
+        type: Sequelize.TEXT,
       },
       vso: {
-        type: Sequelize.TEXT
+        allowNull: true,
+        type: Sequelize.TEXT,
       },
       hsd: {
-        type: Sequelize.TEXT
+        allowNull: true,
+        type: Sequelize.TEXT,
       },
       hso: {
-        type: Sequelize.TEXT
+        allowNull: true,
+        type: Sequelize.TEXT,
       },
       draw: {
-        type: Sequelize.TEXT
+        allowNull: true,
+        type: Sequelize.TEXT,
       },
       createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+        allowNull: true,
+        type: Sequelize.DATE,
       },
       updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
+        allowNull: true,
+        type: Sequelize.DATE,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('LineToSends');
-  }
+    await queryInterface.dropTable("LineToSends");
+  },
 };
