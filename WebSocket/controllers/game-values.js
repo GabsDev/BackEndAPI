@@ -30,7 +30,6 @@ module.exports = {
         IdGame: req.body.IdGame,
         leg: req.body.leg,
         pid: req.body.pid,
-        lid: req.body.lid,
         VisitorOdds: req.body.VisitorOdds,
         HomeOdds: req.body.HomeOdds,
         TotalOver: req.body.TotalOver,
@@ -73,7 +72,6 @@ module.exports = {
       lineToSend.IdGame = req.body.IdGame;
       lineToSend.leg = req.body.leg;
       lineToSend.pid = req.body.pid;
-      lineToSend.lid = req.body.lid;
       lineToSend.VisitorOdds = req.body.VisitorOdds;
       lineToSend.HomeOdds = req.body.HomeOdds;
       lineToSend.TotalOver = req.body.TotalOver;
