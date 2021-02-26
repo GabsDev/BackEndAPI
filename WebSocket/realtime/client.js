@@ -1,8 +1,8 @@
 const io = require("socket.io-client");
 
-let host = "http://localhost:3000";
+let host = "http://localhost:3000/";
 
-if (process.env.NODE_ENV && process.env.NODE_ENV == "production") {
+if (process.env.NODE_ENV && process.env.NODE_ENV === "production") {
   host = "https://dry-fortress-62286.herokuapp.com/";
 }
 

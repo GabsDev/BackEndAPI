@@ -2,16 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 
-const session = require("express-session");
+const lineToSendRoutes = require("./routes/lines-to-send_routes");
 
-const tasksRoutes = require("./routes/tasks_routes");
-const registrationsRoutes = require("./routes/registrations_routes");
-const sessionsRoutes = require("./routes/sessions_routes");
-const categoriesRoutes = require("./routes/categories_routes");
-
-const findUserMiddleware = require("./middlewares/find_user");
-const authUser = require("./middlewares/auth_user");
-const tasks = require("./controllers/tasks");
 const socketio = require("socket.io");
 
 const app = express();
@@ -20,59 +12,22 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.set("view engine", "pug");
 
-app.use(
-  session({
-    secret: ["12iasdhasjdasdhbasjd", "123yhuasdgasdjkznxcjxzkh1y23"],
-    saveUninitialized: false,
-    resave: false,
-  })
-);
-
-app.use(findUserMiddleware);
-app.use(authUser);
-app.use(tasksRoutes);
-app.use(registrationsRoutes);
-app.use(sessionsRoutes);
-app.use(categoriesRoutes);
+app.use(lineToSendRoutes);
 
 app.get("/", function (req, res) {
-  res.render("home", { user: req.user });
+  res.render("home", {});
 });
 
 let server = app.listen(3000);
 let io = socketio(server);
-let sockets = {};
-
-let usersCount = 0;
 
 io.on("connection", function (socket) {
-  let userId = socket.request._query.loggeduser;
-  if (userId) sockets[userId] = socket;
-  console.log(sockets);
-  // Actuaiza usuarios en tiempo real
-  usersCount++;
-  io.emit("count_updated", { count: usersCount });
-
-  socket.on("new_task", function (data) {
-    if (data.userId) {
-      let userSocket = sockets[data.userId];
-      if (!userSocket) return;
-
-      userSocket.emit("new_task", data);
-    }
+  socket.on("new_line", function (data) {
+    io.emit("new_line", data);
   });
 
-  socket.on("disconnect", function () {
-    Object.keys(sockets).forEach((userId) => {
-      let s = sockets[userId];
-      if (s.id == socket.id) sockets[userId] = null;
-    });
-
-    console.log(sockets);
-
-    usersCount--;
-    io.emit("count_updated", { count: usersCount });
-  });
+  socket.on("disconnect", function () {});
 });
 
 const client = require("./realtime/client");
+module.exports = app;
