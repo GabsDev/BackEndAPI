@@ -1,0 +1,52 @@
+html
+    head
+        title Line to Send
+    body
+        table(style='width:100%', border='1')
+            tr
+                th u
+                th action
+                th sid
+                th eid
+                th leg
+                th pid
+                th alt
+                th lid
+                th lid
+                th vml
+                th hml
+                th ttl
+                th tov
+                th tun
+                th vsd
+                th vso
+                th hsd
+                th hso
+                th draw
+                each line in lines
+                    tr
+                        td= line.u
+                        td= line.action
+                        td= line.sid
+                        td= line.eid
+                        td= line.leg
+                        td= line.pid
+                        td= line.alt
+                        td= line.lid
+                        td= line.lid
+                        td= line.vml
+                        td= line.hml
+                        td= line.ttl
+                        td= line.tov
+                        td= line.tun
+                        td= line.vsd
+                        td= line.vso
+                        td= line.hsd
+                        td= line.hso
+                        td= line.draw
+        script(src="/socket.io/socket.io.js")
+        script.
+            socket = io.connect()
+            socket.on('new_line', function (data) {
+                console.log(data);
+            })
