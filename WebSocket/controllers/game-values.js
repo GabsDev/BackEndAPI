@@ -3,7 +3,7 @@ const GameValue = require("../models").GameValue;
 module.exports = {
   api: function (req, res) {
     GameValue.findAll({
-      attributes: { exclude: ["createdAt", "updatedAt"] },
+      attributes: { exclude: ["id", "createdAt", "updatedAt"] },
     })
       .then((result) => {
         res.json(result);
@@ -15,7 +15,7 @@ module.exports = {
   },
   index: function (req, res) {
     GameValue.findAll({
-      attributes: { exclude: ["createdAt", "updatedAt"] },
+      attributes: { exclude: ["id", "createdAt", "updatedAt"] },
     }).then((lines) => {
       res.render("game-value/index", { lines });
     });
@@ -23,13 +23,7 @@ module.exports = {
   create: function (req, res) {
     GameValue.create(
       {
-        g8: req.body.g8,
-        g8bridge: req.body.g8bridge,
-        setValue: req.body.setValue,
-        sid: req.body.sid,
         IdGame: req.body.IdGame,
-        leg: req.body.leg,
-        pid: req.body.pid,
         VisitorOdds: req.body.VisitorOdds,
         HomeOdds: req.body.HomeOdds,
         TotalOver: req.body.TotalOver,
@@ -42,7 +36,19 @@ module.exports = {
         VisitorSpecialOdds: req.body.VisitorSpecialOdds,
       },
       {
-        attributes: { exclude: ["createdAt", "updatedAt"] },
+        fields: [
+          "IdGame",
+          "VisitorOdds",
+          "HomeOdds",
+          "TotalOver",
+          "OverOdds",
+          "UnderOdds",
+          "VisitorSpread",
+          "VisitorSpreadOdds",
+          "HomeSpread",
+          "HomeSpreadOdds",
+          "VisitorSpecialOdds",
+        ],
       }
     )
       .then((result) => {
@@ -65,13 +71,7 @@ module.exports = {
     GameValue.findByPk(req.params.id, {
       attributes: { exclude: ["createdAt", "updatedAt"] },
     }).then((lineToSend) => {
-      lineToSend.g8 = req.body.g8;
-      lineToSend.g8bridge = req.body.g8bridge;
-      lineToSend.setValue = req.body.setValue;
-      lineToSend.sid = req.body.sid;
       lineToSend.IdGame = req.body.IdGame;
-      lineToSend.leg = req.body.leg;
-      lineToSend.pid = req.body.pid;
       lineToSend.VisitorOdds = req.body.VisitorOdds;
       lineToSend.HomeOdds = req.body.HomeOdds;
       lineToSend.TotalOver = req.body.TotalOver;

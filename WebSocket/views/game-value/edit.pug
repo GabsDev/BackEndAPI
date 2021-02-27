@@ -4,13 +4,7 @@ html
         title Update Game Value
     body
         form(action=`/game-value/${line.id}?_method=PUT` method="POST")
-            input(type="text" name="g8" placeholder="u" value=`${line.g8}`)
-            input(type="text" name="g8bridge" placeholder="p" value=`${line.g8bridge}`)
-            input(type="text" name="setValue" placeholder="action" value=`${line.setValue}`)
-            input(type="integer" name="sid" placeholder="sid" value=`${line.sid}`)
             input(type="integer" name="IdGame" placeholder="eid" value=`${line.IdGame}`)
-            input(type="integer" name="leg" placeholder="leg" value=`${line.leg}`)
-            input(type="integer" name="pid" placeholder="pid" value=`${line.pid}`)
             input(type="text" name="VisitorOdds" placeholder="vml" value=`${line.VisitorOdds}`)
             input(type="text" name="HomeOdds" placeholder="hml" value=`${line.HomeOdds}`)
             input(type="text" name="TotalOver" placeholder="ttl" value=`${line.TotalOver}`)

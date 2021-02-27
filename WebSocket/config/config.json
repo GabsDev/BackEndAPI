@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "sa",
-    "password": "Asus2020",
-    "database": "proyecto-ws-alone",
-    "host": "127.0.0.1",
+    "username": "lavila",
+    "password": "9(fAu[kR/L.&U\\hf",
+    "database": "SOCKET",
+    "host": "10.10.10.30",
     "dialect": "mssql"
   },
   "test": {

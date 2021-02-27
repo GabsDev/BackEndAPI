@@ -4,13 +4,7 @@ html
     body
         table(style='width:100%', border='1')
             tr
-                th u
-                th p
-                th action
-                th sid
                 th eid
-                th leg
-                th pid
                 th vml
                 th hml
                 th ttl
@@ -23,13 +17,7 @@ html
                 th draw
                 each line in lines
                     tr
-                        td= line.g8
-                        td= line.g8bridge
-                        td= line.setValue
-                        td= line.sid
                         td= line.IdGame
-                        td= line.leg
-                        td= line.pid
                         td= line.VisitorOdds
                         td= line.HomeOdds
                         td= line.TotalOver
@@ -42,7 +30,7 @@ html
                         td= line.VisitorSpecialOdds
         script(src="/socket.io/socket.io.js")
         script.
-            socket = io.connect()
+            socket = io.connect(window.location.origin)
             socket.on('new_game_value', function (data) {
                 console.log(data);
             })
